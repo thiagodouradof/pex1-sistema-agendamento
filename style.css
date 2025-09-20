@@ -1,0 +1,266 @@
+:root {
+  --primary: #2c3e50;
+  --secondary: #3498db;
+  --accent: #e74c3c;
+  --light: #ecf0f1;
+  --dark: #34495e;
+  --success: #2ecc71;
+  --warning: #f39c12;
+  --danger: #e74c3c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  min-height: 100vh;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  background: var(--primary);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+header h1 {
+  margin-bottom: 0.5rem;
+}
+
+.tabs {
+  display: flex;
+  background: var(--dark);
+}
+
+.tab-button {
+  flex: 1;
+  padding: 1rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.tab-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tab-button.active {
+  background: var(--secondary);
+  font-weight: bold;
+}
+
+.tab-content {
+  display: none;
+  padding: 2rem;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Estilos do Calendário */
+.calendar-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.calendar-controls button {
+  padding: 0.5rem 1rem;
+  background: var(--secondary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.calendar {
+  margin-bottom: 2rem;
+}
+
+.calendar-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: bold;
+  background: var(--light);
+  padding: 0.5rem;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.calendar-day {
+  min-height: 80px;
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.calendar-day:hover {
+  background: #f0f0f0;
+}
+
+.calendar-day.other-month {
+  color: #ccc;
+  background: #f9f9f9;
+}
+
+.calendar-day.has-events {
+  background: rgba(52, 152, 219, 0.1);
+  border-left: 3px solid var(--secondary);
+}
+
+.calendar-day.selected {
+  background: var(--secondary);
+  color: white;
+}
+
+.day-events {
+  border: 1px solid #ddd;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.event-item {
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-left: 4px solid var(--secondary);
+  background: #f9f9f9;
+}
+
+/* Formulário */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button[type="submit"] {
+  background: var(--success);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Recursos */
+.resources-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.resource-card {
+  border: 1px solid #ddd;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.resource-card h3 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  margin: 5% auto;
+  padding: 2rem;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: var(--light);
+  color: var(--dark);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .calendar-controls {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .resources-list {
+    grid-template-columns: 1fr;
+  }
+
+  .tab-button {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.9rem;
+  }
+}

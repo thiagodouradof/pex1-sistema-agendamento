@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Agendamento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Sistema de Agendamento</h1>
+        <p>Controle os espaços e recursos da sua comunidade</p>
+      </header>
+
+      <nav class="tabs">
+        <button class="tab-button active" data-tab="calendario">
+          Calendário
+        </button>
+        <button class="tab-button" data-tab="agendamento">
+          Novo Agendamento
+        </button>
+        <button class="tab-button" data-tab="recursos">Recursos</button>
+      </nav>
+
+      <main>
+
+        <div id="calendario" class="tab-content active">
+          <div class="calendar-controls">
+            <button id="prev-month">&lt; Mês Anterior</button>
+            <h2 id="current-month">Maio 2024</h2>
+            <button id="next-month">Próximo Mês &gt;</button>
+          </div>
+          <div class="calendar">
+            <div class="calendar-header">
+              <div>Dom</div>
+              <div>Seg</div>
+              <div>Ter</div>
+              <div>Qua</div>
+              <div>Qui</div>
+              <div>Sex</div>
+              <div>Sáb</div>
+            </div>
+            <div id="calendar-days" class="calendar-days">
+            </div>
+          </div>
+          <div id="day-events" class="day-events">
+            <h3>Agendamentos do dia: <span id="selected-date"></span></h3>
+            <div id="events-list"></div>
+          </div>
+        </div>
+
+        <div id="agendamento" class="tab-content">
+          <h2>Novo Agendamento</h2>
+          <form id="booking-form">
+            <div class="form-group">
+              <label for="event-name">Nome do Evento *</label>
+              <input type="text" id="event-name" required />
+            </div>
+            <div class="form-group">
+              <label for="event-date">Data *</label>
+              <input type="date" id="event-date" required />
+            </div>
+            <div class="form-group">
+              <label for="start-time">Hora Início *</label>
+              <input type="time" id="start-time" required />
+            </div>
+            <div class="form-group">
+              <label for="end-time">Hora Término *</label>
+              <input type="time" id="end-time" required />
+            </div>
+            <div class="form-group">
+              <label for="resource">Recurso/Espaço *</label>
+              <select id="resource" required>
+                <option value="">Selecione um recurso</option>
+                <option value="salao">Salão Principal</option>
+                <option value="sala-reuniao">Sala de Reuniões</option>
+                <option value="quadra">Quadra</option>
+                <option value="cozinha">Cozinha</option>
+                <option value="audio">Equipamento de Áudio</option>
+                <option value="projetor">Projetor</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="requester">Solicitante *</label>
+              <input type="text" id="requester" required />
+            </div>
+            <div class="form-group">
+              <label for="contact">Contato *</label>
+              <input
+                type="text"
+                id="contact"
+                required
+                placeholder="Telefone ou e-mail"
+              />
+            </div>
+            <div class="form-group">
+              <label for="description">Descrição/Observações</label>
+              <textarea id="description" rows="3"></textarea>
+            </div>
+            <button type="submit">Solicitar Agendamento</button>
+          </form>
+        </div>
+
+        <div id="recursos" class="tab-content">
+          <h2>Recursos e Espaços Disponíveis</h2>
+          <div class="resources-list">
+            <div class="resource-card">
+              <h3>Salão Principal</h3>
+              <p>Capacidade: 2000 pessoas</p>
+              <p>Recursos: Som, projetor, mesas e cadeiras</p>
+            </div>
+            <div class="resource-card">
+              <h3>Sala de Reuniões</h3>
+              <p>Capacidade: 15 pessoas</p>
+              <p>Recursos: Mesa de reunião, TV</p>
+            </div>
+            <div class="resource-card">
+              <h3>Quadra</h3>
+              <p>Capacidade: 50 pessoas</p>
+              <p>Recursos: Quadra poliesportiva coberta</p>
+            </div>
+            <div class="resource-card">
+              <h3>Cozinha</h3>
+              <p>Equipamentos: Fogão, geladeira, microondas</p>
+              <p>Utensílios básicos disponíveis</p>
+            </div>
+            <div class="resource-card">
+              <h3>Equipamento de Áudio</h3>
+              <p>Inclui: 2 microfones, caixas de som, mixer</p>
+              <p>Requer técnico para operação</p>
+            </div>
+            <div class="resource-card">
+              <h3>Projetor 1</h3>
+              <p>Resolução: 1080p</p>
+              <p>Inclui tela projetor e cabos</p>
+            </div>
+            <div class="resource-card">
+              <h3>Projetor 2</h3>
+              <p>Resolução: 1080p</p>
+              <p>Inclui tela projetor e cabos</p>
+            </div>
+            <div class="resource-card">
+              <h3>Projetor 3</h3>
+              <p>Resolução: 1080p</p>
+              <p>Inclui tela projetor e cabos</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div id="event-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modal-title">Detalhes do Agendamento</h2>
+        <div id="modal-body"></div>
+        <button id="cancel-booking" class="btn-danger">
+          Cancelar Agendamento
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
